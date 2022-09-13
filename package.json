@@ -1,0 +1,24 @@
+{
+  "name": "qr",
+  "version": "1.0.0",
+  "description": "qr code generator and scanner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bayezid-hossain/qr_hn.git"
+  },
+  "keywords": [
+    "qr",
+    "highwaynext",
+    "gobd"
+  ],
+  "author": "bayezid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bayezid-hossain/qr_hn/issues"
+  },
+  "homepage": "https://github.com/bayezid-hossain/qr_hn#readme"
+}
