@@ -2,14 +2,21 @@ const mongoose = require('mongoose');
 
 const busSchema = new mongoose.Schema(
   {
-    busLicenseNumber: {
-      type: String,
-      require: [true, 'Please provide license number'],
-    },
-
     owner: {
       type: mongoose.Schema.ObjectId,
       ref: 'busOwner',
+    },
+    routeId: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'BusRoute',
+    },
+    seatNumber: {
+      type: Number,
+      require: [true, 'Please provide seat number'],
+    },
+    ac: {
+      type: Boolean,
+      default: false,
     },
     status: {
       type: String,

@@ -5,6 +5,11 @@ module.exports = (err, req, res, next) => {
   err.code = err.code || 500;
   err.message = err.message || 'Internal Server Error';
 
+  //INVALID ID LENGTH
+  if (err.path == '_id' && err.code == 500) {
+    const message = `No user found with the id : ${err.value}`;
+    err = new ErrorHandler(message, 400);
+  }
   //wrong mongodb id error
 
   if (err.name == 'CastError') {

@@ -11,8 +11,8 @@ process.on('uncaughtException', (err) => {
 
 //Connecting to database
 connectDatabase();
-const server = app.listen(process.env.AUTHPORT, () => {
-  console.log(`auth is listening to localhost:${process.env.AUTHPORT}`);
+const server = app.listen(process.env.QRPORT, () => {
+  console.log(`QR is listening to localhost:${process.env.QRPORT}`);
 });
 
 // Unhandled Promise Rejection

@@ -14,7 +14,7 @@ app.use(
 );
 app.use(bodyParser.json());
 //Route Imports
-const authRoute = require('./routes/authRoute');
+const authRoute = require('./routes/qrRoute');
 app.use('', authRoute);
 
 //Middleware for errors

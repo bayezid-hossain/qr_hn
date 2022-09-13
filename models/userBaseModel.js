@@ -48,7 +48,6 @@ UserSchema.methods.getJWTToken = function () {
   return jwt.sign(
     {
       id: this._id,
-      role: this.role,
     },
     process.env.JWT_SECRET,
     {

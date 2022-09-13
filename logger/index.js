@@ -20,7 +20,7 @@ const logger = createLogger({
     warning: 2,
     error: 3,
   },
-  defaultMeta: { service: 'busowner-service' },
+  defaultMeta: { service: 'qr-service' },
   transports: [
     new transports.MongoDB({
       format: combine(
@@ -31,7 +31,7 @@ const logger = createLogger({
       ),
       level: 'info',
       db: process.env.DB_URI_GLOBAL,
-      collection: 'logs_busowner',
+      collection: 'logs_qr',
       options: { useUnifiedTopology: true },
     }),
     // new transports.Console({
@@ -55,7 +55,7 @@ const logger = createLogger({
       ),
       level: 'error',
       db: process.env.DB_URI_GLOBAL,
-      collection: 'logs_busowner',
+      collection: 'logs_qr',
       options: { useUnifiedTopology: true },
     }),
     new transports.MongoDB({
@@ -67,7 +67,7 @@ const logger = createLogger({
       ),
       level: 'warning',
       db: process.env.DB_URI_GLOBAL,
-      collection: 'logs_busowner',
+      collection: 'logs_qr',
       options: { useUnifiedTopology: true },
     }),
   ],
