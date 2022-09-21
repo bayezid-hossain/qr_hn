@@ -4,6 +4,7 @@ const Bus = require('../models/busModel');
 const qr = require('qr-image');
 const logger = require('../logger/index');
 var fs = require('fs');
+rmdir = require('rimraf');
 var zipper = require('zip-local');
 const { pipeline } = require('stream');
 //Register a busOwner
@@ -62,7 +63,6 @@ exports.generateQRCode = catchAsyncErrors(async (req, res, next) => {
       r: bus.routeId.toString(),
       s: i,
     };
-    console.log(qrString);
     var code = qr.image(JSON.stringify(qrString), { type: 'png' });
     code.pipe(require('fs').createWriteStream(`${dir}/${i}.png`));
   }
@@ -76,9 +76,18 @@ exports.generateQRCode = catchAsyncErrors(async (req, res, next) => {
       zipped.save(`${dir}/QRCodes.zip`, function (error) {
         if (!error) {
           console.log('saved successfully !');
+
+          res.download(`${dir}/QRCodes.zip`, function (err) {
+            rmdir(dir, function (error) {
+              if (!error) {
+                console.log('deleted folder');
+              }
+            });
+          });
+        } else if (error) {
+          return next(new ErrorHandler(error, 400));
         }
       });
     }
   });
-  res.download(`${dir}/QRCodes.zip`);
 });
